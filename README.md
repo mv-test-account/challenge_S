@@ -3,7 +3,7 @@
 clone repository 
 then 
 run  
-yarn : Installs dependencies into your project
+npm install
 
 and 
-yarn cypress:open    it will open Cypress GUI app
+npx cypress open : to open Cypress GUI app
