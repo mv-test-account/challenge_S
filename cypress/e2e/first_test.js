@@ -1,5 +1,3 @@
-//var fx = require('fixtures');
-
 context("Open website", () => {
   before(() => {
     cy.visit("/");
