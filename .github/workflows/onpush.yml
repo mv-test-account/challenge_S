@@ -1,0 +1,31 @@
+name: Cypress on push tests
+
+on:
+  push:
+jobs:
+  cypress_run:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
+     - name: Cypress run
+       uses: cypress-io/github-action@v2
+       with:
+        browser: chrome
+        headless: true
+        config: video=false
+       env:
+        Cypress_environment: staging
+     - name: 📊 Save test screenshots
+       uses: actions/upload-artifact@v1
+       if: failure()
+       with:
+        name: cypress-screenshots
+        path: cypress/screenshots
+     - name: 📊 Save test report
+       uses: actions/upload-artifact@v1
+       if: failure()
+       with:
+        name: cypress-report
+        path: cypress/report
+     
